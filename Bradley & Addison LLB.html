@@ -1,0 +1,612 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Bradley & Addison Law Firm</title>
+    <style>
+        /* Prevent horizontal scrolling */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            overflow-x: hidden;
+            font-family: "Trebuchet MS", Trebuchet, serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Navigation Menu */
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1em 1em;
+            background-color: rgba(255, 255, 255, 0.8);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right:0;
+            width: 90%;
+            height:5%;
+            z-index: 9;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .logo-container img {
+            height: 150px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+            margin-left: 2em;
+        }
+
+        .nav-links a {
+            color: rgba(128, 0, 0, 1);
+            padding: 0.5em 1em;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(128, 0, 128, 0.1);
+            color:black
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            min-width: 200px;
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: rgba(128, 0, 0, 1);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: rgba(128, 0, 128, 0.1);
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+            margin-top: auto;
+            width: 100%;
+        }
+
+        /* Left and Right sections for the rest of the page content */
+        .content-container {
+            display: flex;
+            flex-direction: row;
+            width: 120%;
+            padding: 20px;
+        }
+
+        .left-section,
+        .right-section {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            margin-left:4%;
+        }
+
+        /* Side Menu Styles */
+        .side-menu {
+            height: 80%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: rgba(128, 0, 0, 0.9);
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+            z-index: 99;
+        }
+
+        .side-menu a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 20px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .side-menu a:hover {
+            background-color: rgba(128, 0, 128, 0.1);
+        }
+
+        .side-menu .close-btn {
+            position: absolute;
+            top: 10;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Media Queries to make the menu responsive */
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                display: none; /* Hide navigation links */
+            }
+
+            .menu-icon {
+                display: block;
+                font-size: 30px;
+                cursor: pointer;
+                color: black;
+                z-index: 100;
+            }
+
+            .side-menu {
+                width: 0; /* Start with the menu hidden */
+            }
+
+            /* When side menu is open, shift the content */
+            body.shifted {
+                margin-right: 250px; /* Shift content to the right */
+            }
+
+            .content-container {
+                transition: margin-right 0.5s; /* Smooth transition */
+            }
+        }
+
+        /* Background Image and Text Box Section */
+        .background-container {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            background-image: url('BACK.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: 1;
+        }
+
+        .background-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            background: rgba(128, 0, 0, 0.8);
+            color: white;
+            padding: 60px 80px; /* Increased padding for a larger text box */
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            max-width: 700px;
+            width: 100%;
+            font-size: 22px;
+            animation: slide-in 1s ease-out;
+            z-index: 2;
+        }
+
+        @keyframes slide-in {
+            from {
+                transform: translate(-50%, -60%);
+                opacity: 0;
+            }
+            to {
+                transform: translate(-50%, -50%);
+                opacity: 1;
+            }
+        }
+
+        .read-more-link {
+            color: red;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 26px; /* Increased font size */
+        }
+
+        .read-more-link:hover {
+            text-decoration: underline;
+
+  .content-container {
+            display: flex;
+            align-items: left;
+            justify-content:left;
+            border:2px solid black;
+            padding:10px;
+            
+            
+        }
+
+        .left-section {
+            width: 40%; /* 40% width */
+            background-color: lightblue;
+            padding: 20px;
+            margin-right:500%;
+            text-align: right;
+        }
+
+        .separator {
+            width: 5px; /* Thickness of the red line */
+            background-color: red;
+            margin: 0 10px; /* Space around the line */
+        }
+
+        .right-section {
+            width: 40%; /* 40% width */
+            background-color: lightcoral;
+            padding: 20px;
+            overflow-y: auto;
+            text-align: center;
+           
+
+        } 
+
+        .slideshow-container {
+            position: relative;
+            width: 80%;
+            max-width: 800px;
+            margin: auto;
+            overflow: hidden;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+        }
+
+        .slides {
+            display: none;
+        }
+
+        .slides img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        /* Dots/Indicators */
+        .dots {
+            text-align: center;
+            padding: 10px 0;
+            background: #fff;
+            border-top: 1px solid #ddd;
+        }
+
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .active, .dot:hover {
+            background-color: #717171;
+        }
+ 
+
+        .bar-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f4f4;
+            padding: 20px;
+            position: relative;
+        }
+
+        .bar-container::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: brown;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        .text {
+            position: relative;
+            background-color: #f4f4f4;
+            padding: 0 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: black;
+            z-index: 2;
+        }
+
+        .text span {
+            border-bottom: 2px solid red;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Menu -->
+    <nav>
+        <div class="logo-container">
+            <img src="LLP LOGO.jpg" alt="Bradley & Addison Logo">
+        </div>
+        <div class="nav-links">
+            <a href="Bradley & Addison LLB.html">WHO WE ARE</a>
+            <a href="services.html">WHAT WE DO</a>
+             <a href="about.html">TRANSACTION</a>
+            <a href="team.html">TEAM</a>
+            <a href="services.html">PUBLICATION</a>
+            <a href="careers.html">CAREERS</a>
+            <div class="dropdown">
+                <a href="javascript:void(0)">CLIENTS <span class="arrow">&#9660;</span></a>
+                <div class="dropdown-content">
+                    <a href="FEEDBACK.html">CLIENTS FEEDBACK & TESTIMONIALS</a>
+                    <a href="ASSOCIATION.html">ASSOCIATION</a>
+
+                </div>
+            </div>
+            <a href="contact.html">CONTACT</a>
+        </div>
+        <!-- Menu Icon for Small Screens -->
+        <span class="menu-icon" onclick="openSideMenu()">&#9776;</span>
+    </nav>
+
+    <!-- Side Menu -->
+    <div id="sideMenu" class="side-menu">
+        <a href="javascript:void(0)" class="close-btn" onclick="closeSideMenu()">&times;</a>
+        <a href="Bradley & Addison LLB.html">WHO WE ARE</a>
+        <a href="services.html">WHAT WE DO</a>
+        <a href="about.html">TRANSACTION</a>
+        <a href="team.html">TEAM</a>
+        <a href="services.html">PUBLICATION</a>
+        <a href="careers.html">CAREERS</a>
+<div class="dropdown">
+                <a href="javascript:void(0)">CLIENTS <span class="arrow">&#9660;</span></a>
+                <div class="dropdown-content">
+                    <a href="FEEDBACK.html">CLIENTS FEEDBACK & TESTIMONIALS</a>
+                    <a href="ASSOCIATION.html">ASSOCIATION</a>
+
+                </div>
+            </div>
+
+        <a href="contact.html">CONTACT</a>
+    </div>
+
+    <!-- Background Image and Text Box Section -->
+    <div class="background-container">
+        <div class="background-text">
+            <font color="black"><p><h1>We won again</h1></p></font>
+            Bradley & Addison LLP successfully represented
+            a worker fired for using marijuana to win a $191K
+            settlement for using marijuana.
+            <br><br>
+            <a href="https://www.timesunion.com/state/article/jury-awards-191K-amsterdam-city-worker-fired-18185310.php" class="read-more-link">
+                Read More &gt;&gt;
+            </a>
+        </div>
+    </div>
+
+    <!-- Content Sections -->
+    <div class="content-container">
+        <div class="left-section">
+            <u><header><b>L</b>eading <b>L</b>aw <b>F</b>irm </b>i</b>n <b>A</b>msterdam</header></u>
+            <font size="5" color="Red"><b><p>Bradley & Addison</b></font><font size="4"> is unquestionably one of the best law firms in Amsterdam and a crucible for gifted young lawyers. We are ranked as a tier 1/top tier law firm in Amsterdam by The Legal 500 in the following practice areas: Banking, Finance, M&A, Commercial, Corporate, Energy, Infrastructure, Projects and Disputes making us one of the top 3 corporate law firms in Amsterdam advising Global Multinationals, Fortune 500 companies and Foreign Governments and their agencies. Chambers & Partners shortlisted our firm as one of the "best law firms" in Amsterdam. We are available to our clients on weekends and after working hours. The consensus in the market is that we are the most responsive and deliver quality work faster than any other law firm in Amsterdam.
+
+<p>The focus of our firm is to provide top notch legal service comparable to what clients receive from top tier law firms in New York or London to foreign governments, global multinationals and Fortune 500 companies doing business in Amsterdam.</p>
+
+<p>We are a specialized firm. So we are not, and do not strive to be the law firm of every company. Our goal is to be the firm of choice (which we are) for global multinationals with respect to their most challenging legal issues, most significant business transactions and most critical and complex disputes.</p>
+
+<p>Our reputation for excellence is no secret. We outshine our competitors because we are more responsive, more solution oriented, deliver quality work and run a 24 hour practice.</p>
+
+<p>100% of our top 40 Global Multinationals, Multilateral Agencies, Foreign Governments and Fortune 500 clients came from competing top tier law firms in Amsterdam.</p>
+<p>In addition,we counsel:</p>
+<ul>
+    <li>Majority of the Fortune 500 Companies doing business in Netherlands.</li>
+    <li>Over 100 Global Multinationals doing business in Netherlands.</li>
+    <li>Almost all the big Oil and Gas Companies doing Business in Netherlands.</li>
+    <li>Almost all the big Mining Companies doing business in Netherlands.</li>
+    <li>Majority of the Banks and International Finance Institutions doing business in Netherlands.</li>
+    <li>3 of the most developed countries in the world.</li>
+</ul>
+<p>We keep our word. We keep our integrity. We expect to win all our cases and close all deals. We are thoughtful. And always committed in heart and mind to our clients.</p>
+
+<p>We have a strict anti-bribery and anti corruption policy. Thus, we do not give or accept anything that looks, sounds, feels or very faintly smells like a bribe or kickback.</p></font>
+<a href=FEEDBACK.html>
+<img src="img2.jpg" width="400">
+<img src="img3.jpg" width="400">
+<img src="img4.jpg" width="400"></a>
+
+
+
+
+
+<div class="separator"></div>
+        </div>
+        <div class="right-section">
+            <h3><font size="4"><u><heading>Poster</heading></u></font></h3>
+            <p><img src="img5.jpg"></p>
+          <h3><u><p>Highlight</p></u></h3>
+       
+<div class="slideshow-container">
+        <!-- Slide 1 -->
+        <div class="slides">
+            <img src="img6.jpg" alt="Slide 1">
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="slides">
+            <img src="img7.jpg" alt="Slide 2">
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="slides">
+            <img src="img8.jpg" alt="Slide 3">
+        </div>
+        
+        <!-- Slide 4 -->
+        <div class="slides">
+            <img src="img9.jpg" alt="Slide 4">
+        </div>
+
+          <!-- Slide 5 -->
+        <div class="slides">
+            <img src="img10.jpg" alt="Slide 5">
+        </div>
+
+<p><a href="GUARANTEES.html"><img src="img12.jpg"></a></p>
+<p><a href="FEEDBACK.html"><img src="img13.jpg"></a></p>
+<p><a href="Bradley & Addison LLB.html"><img src="img14.jpg"></a>
+<p><a href="Bradley & Addison LLB.html"><img src="img15.jpg"></a>
+<p><a href="news.html">Read more &gt;&gt;</a></p>
+
+    </div>
+  
+
+    <script>
+        let slideIndex = 0;
+
+        function showSlides() {
+            let slides = document.getElementsByClassName("slides");
+            let dots = document.getElementsByClassName("dot");
+
+            // Hide all slides
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+
+            // Remove active class from all dots
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+
+            // Increment slide index
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+            }
+
+            // Show current slide and activate corresponding dot
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
+
+        // Call showSlides() every 3 seconds
+        setInterval(showSlides, 3000);
+
+        // Show the first slide initially
+        showSlides();
+    </script>
+        </div>
+    </div>
+   
+   
+
+<img src="img16.jpg"> 
+<img src="img17.jpg">
+<p><img src="img18.jpg"></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <style>
+  footer {
+    display: flex;
+    flex-direction: column; /* Stack the paragraphs vertically */
+    justify-content: right; /* Vertically center the content */
+    align-items: left; /* Horizontally center the content */
+    text-align: left; /* Center the text */
+    padding: 20px; /* Optional padding for spacing */
+    width: 100%; /* Make sure it spans the full width */
+    background-color: #333; /* Optional background color */
+    color: white; /* Text color */
+  }
+
+  footer p {
+    margin: 5px 0; /* Add some spacing between paragraphs */
+  }
+
+  footer a {
+    color: #f0f0f0; /* Optional: Change the link color */
+    text-decoration: none;
+  }
+
+  footer a:hover {
+    text-decoration: underline; /* Optional: Underline on hover */
+  }
+</style>
+
+<!-- Footer -->
+<footer>
+  <font size="3"><p>&copy; 2020 Bradley & Addison LLP. All rights reserved.</p>
+  <p>Office Location: Apollolaan 14, 1078 AB Amsterdam, Netherlands</p>
+  <p>Telephone: +31 (0)20 123 4567</p>
+  <p>Email: <a href="mailto:bradleyaddison@judiciarys.com">bradleyaddison@judiciarys.com</a></p></font>
+</footer>
+
+
+    <script>
+        // Open Side Menu
+        function openSideMenu() {
+            document.getElementById("sideMenu").style.width = "250px";
+            document.body.classList.add("shifted");
+        }
+
+        // Close Side Menu
+        function closeSideMenu() {
+            document.getElementById("sideMenu").style.width = "0";
+            document.body.classList.remove("shifted");
+        }
+    </script>
+</body>
+</html>

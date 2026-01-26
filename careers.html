@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers-Bradley & Addison Law Firm</title>
+    <style>
+        /* Prevent horizontal scrolling */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            overflow-x: hidden;
+           font-family: "Trebuchet MS", Trebuchet, serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Navigation Menu */
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1em 1em;
+            background-color: rgba(255, 255, 255, 0.8);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right:0;
+            width: 90%;
+            height:5%;
+            z-index: 9;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .logo-container img {
+            height: 150px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+            margin-left: 2em;
+        }
+
+        .nav-links a {
+            color: rgba(128, 0, 0, 1);
+            padding: 0.5em 1em;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(128, 0, 128, 0.1);
+            color:black
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            min-width: 200px;
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: rgba(128, 0, 0, 1);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: rgba(128, 0, 128, 0.1);
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+            margin-top: auto;
+            width: 100%;
+        }
+
+        /* Left and Right sections for the rest of the page content */
+        .content-container {
+            display: flex;
+            flex-direction: row;
+            width: 140%;
+            padding: 20px;
+            
+            
+        }
+
+        .left-section{
+          flex:1;
+          padding: 20px;
+          overflow-y: auto;
+          margin-left:5%; 
+          width:90%;
+}         
+
+
+        .right-section {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            margin-right:5%; 
+        }
+
+        /* Side Menu Styles */
+        .side-menu {
+            height: 80%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: rgba(128, 0, 0, 0.9);
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+            z-index: 99;
+        }
+
+        .side-menu a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 20px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .side-menu a:hover {
+            background-color: rgba(128, 0, 128, 0.1);
+        }
+
+        .side-menu .close-btn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 20px;
+            margin-left: 50px;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Media Queries to make the menu responsive */
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                display: none; /* Hide navigation links */
+            }
+
+            .menu-icon {
+                display: block;
+                font-size: 30px;
+                cursor: pointer;
+                color: black;
+                z-index: 100;
+            }
+
+            .side-menu {
+                width: 0; /* Start with the menu hidden */
+            }
+
+            /* When side menu is open, shift the content */
+            body.shifted {
+                margin-left: 250px; /* Shift content to the right */
+            }
+
+            .content-container {
+                transition: margin-left 0.5s; /* Smooth transition */
+            }
+        }
+
+        .background-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            background-image: url('img19.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: 1;
+            border-bottom: 5px solid red; /* Red underline */
+        }
+
+        
+        }
+
+        @keyframes slide-in {
+            from {
+                transform: translate(-50%, -60%);
+                opacity: 0;
+            }
+            to {
+                transform: translate(-50%, -50%);
+                opacity: 1;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Menu -->
+    <nav>
+        <div class="logo-container">
+            <img src="LLP LOGO.jpg" alt="Bradley & Addison Logo">
+        </div>
+        <div class="nav-links">
+            <a href="Bradley & Addison LLB.html">WHO WE ARE</a>
+            <a href="services.html">WHAT WE DO</a>
+            <a href="about.html">TRANSACTION</a>
+            <a href="team.html">TEAM</a>
+            <a href="services.html">PUBLICATION</a>
+            <a href="careers.html">CAREERS</a>
+            <div class="dropdown">
+                <a href="javascript:void(0)">CLIENTS <span class="arrow">&#9660;</span></a>
+                <div class="dropdown-content">
+                    <a href="FEEDBACK.html">CLIENTS FEEDBACK & TESTIMONIALS</a>
+                    <a href="ASSOCIATION.html">ASSOCIATION</a>
+                </div>
+            </div>
+            <a href="contact.html">CONTACT</a>
+        </div>
+        <!-- Menu Icon for Small Screens -->
+        <span class="menu-icon" onclick="openSideMenu()">&#9776;</span>
+    </nav>
+
+    <!-- Side Menu -->
+    <div id="sideMenu" class="side-menu">
+        <a href="javascript:void(0)" class="close-btn" onclick="closeSideMenu()">&times;</a>
+        <a href="Bradley & Addison LLB.html">WHO WE ARE</a>
+        <a href="services.html">WHAT WE DO</a>
+        <a href="about.html">TRANSACTION</a>
+        <a href="team.html">TEAM</a>
+        <a href="services.html">PUBLICATION</a>
+        <a href="careers.html">CAREERS</a>
+        <a href="FEEDBACK.html">CLIENTS FEEDBACK & TESTIMONIALS</a>
+        <a href="ASSOCIATION.html">ASSOCIATION</a>
+        <a href="contact.html">CONTACT</a>
+    </div>
+
+    <!-- Background Image Section with Red Underline -->
+    <div class="background-container">
+        <div class="background-text">
+            
+        </div>
+    </div>
+
+
+<img src="im32.jpg">
+
+
+
+<!-- Content Sections -->
+    <div class="content-container">
+        <div class="left-section">
+            
+            <font size="5" color="Red"><h10><b><p>BUILDING YOUR CAREER AT BRADLEY & ADDISON</b></p></h10></font>
+
+<p>GODFRED ANDERSON has a very unique corporate culture focused on delivering responsive, innovative and cutting edge legal advice to our clients in Netherlands.</p>
+
+<p>We are not, and do not strive to be, the law firm for every person or company. So, our goal is to be the firm of choice (which we are) for foreign governments, multilateral agencies, and multinational companies with respect to their most challenging legal issues, most significant business transactions and most critical disputes.</p>
+
+<p>Because we provide an unrivalled responsive and world-class legal service, we have intense and long working days totally committed to our clients’ demands. Our lawyers are the first ones our clients call when contemplating an important decision.  For us, talent and experience mean nothing unless our clients succeed.</p>
+
+<p>We seek individuals who are talented, motivated and committed in order to maintain our record of excellence. A career at BRADLEY & ADDISON promises you a few things. You get to be part of a strong team and work on complex (rather than routine) transactions and disputes which provides greater work and self-satisfaction.</p>
+
+<font size="5"><b><p>LIFE AT BRADLEY & ADDISON</p></b></font>
+
+<p>Simply, your typical day at BRADLEY & ADDISON would involve thinking big, being open-minded, closing deals, resolving disputes and solving problems.</p>
+
+<p>Ours is a hands-on approach. So, our lawyers, trainees and support staff all play a critical part in how we resolve that problem or close that deal for the client.</p>
+
+<p>Our value for every worker at the firm is simple: “Performance buys freedom”.  So, it’s hard work, high expectations and no shortcuts. We guarantee that if you work hard then you will reap the rewards of your hard work.
+
+<p>To be sure, the level of client contacts and compensation, including the base salary, allowance, benefits and year-end bonus that we offer our associates is significantly higher than that of any other comparable top tier corporate law firm in Netherlands.
+
+<p>There is fun at the office and we play hard.  We also have an in-house chef so proper lunch is taken care of.
+
+<p>We also have a professional growth support environment, so our lawyers and staff can grow and add value to themselves. We sponsor our lawyers to take part in international bar events and global training aimed at skill set addition and improvement.  Our lawyers also attend a mandatory training program in London organized by one of the best and largest law firms in the world.
+
+<font size="5"><b><p>OUR WORK</p></b></font>
+
+<p>We think creatively about our clients’ problems to find the right solution. Our lawyers work together in teams and the advice we provide is technically sound.
+
+<p>To work here, then, you will need to work well in teams – ours and the clients’. You also need to accept diverse opinions and accept constructive criticism from colleagues. We also play hard, laugh loud, have fun and do not take ourselves too seriously.
+
+<font size="5"><b><p>WHO WE ARE LOOKING FOR</p></b></font>
+
+<p>Every year we receive hundreds of applications from the brightest graduates from Netherlands and abroad, who intend to start their careers with BRADLEY & ADDISON .
+
+<p>Competition for places is fierce because our training programme is the best in Netherlands. If you are interested in a career at BRADLEY & ADDISON , you will need to demonstrate that you are well-mannered, thoughtful and have what it takes ethically and intellectually.
+
+<p>You also need to understand what the expectations of a top tier corporate lawyer are and that you are up to the challenges this job presents.
+
+<p>Because we are available to our clients 24/7, the biggest challenge for you is not just the long hours you spend in the office but your availability to respond every time. The hours are challenging, the work is difficult and clients and colleagues have high expectations. To succeed, you require an adequate amount of commitment and a lot of stamina. We hope you are up to the challenge.
+
+
+
+
+
+<div class="separator"></div>
+        </div>
+        <div class="right-section">
+            
+          <h3><u><p>Highlight</p></u></h3>
+       
+<div class="slideshow-container">
+        <!-- Slide 1 -->
+        <div class="slides">
+            <img src="img6.jpg" alt="Slide 1">
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="slides">
+            <img src="img7.jpg" alt="Slide 2">
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="slides">
+            <img src="img8.jpg" alt="Slide 3">
+        </div>
+        
+        <!-- Slide 4 -->
+        <div class="slides">
+            <img src="img9.jpg" alt="Slide 4">
+        </div>
+
+          <!-- Slide 5 -->
+        <div class="slides">
+            <img src="img10.jpg" alt="Slide 5">
+        </div>
+
+<p><p><p><img src="img36.jpg"></p></p></p>
+
+<p><p><p><p><p><p><p><p><p><p><p><p><p><p><p><p><p><p><img src="img37.jpg"></p></p></p></p></p></p></p></p></p></p></p></p></p></p></p></p>
+<p><p><p><p><p><p><p><p><p><p><p><p><p><p><p><p><p><p><p><a href="GUARANTEES.html"><img src="img12.jpg"></a></p></p></p></p></p></p></p></p></p></p></p></p></p></p></p></p></p>
+
+    </div>
+  
+
+    <script>
+        let slideIndex = 0;
+
+        function showSlides() {
+            let slides = document.getElementsByClassName("slides");
+            let dots = document.getElementsByClassName("dot");
+
+            // Hide all slides
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+
+            // Remove active class from all dots
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+
+            // Increment slide index
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+            }
+
+            // Show current slide and activate corresponding dot
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
+
+        // Call showSlides() every 3 seconds
+        setInterval(showSlides, 3000);
+
+        // Show the first slide initially
+        showSlides();
+    </script>
+        </div>
+    </div>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <style>
+    body {
+      height: 2000px; /* Just to make sure we have scrollable content */
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Button Styling */
+    #back-to-top {
+      position: fixed;
+      bottom: 20px; /* 20px from the bottom */
+      right: 20px;  /* 20px from the right */
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      display: none; /* Hide the button initially */
+    }
+
+    #back-to-top:hover {
+      background-color: #0056b3; /* Darker blue on hover */
+    }
+  </style>
+</head>
+<body>
+
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top">Back to Top</button>
+
+  <script>
+    // Get the button
+    const backToTopButton = document.getElementById('back-to-top');
+
+    // Show or hide the button based on scroll position
+    window.onscroll = function() {
+      if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        backToTopButton.style.display = 'block';
+      } else {
+        backToTopButton.style.display = 'none';
+      }
+    };
+
+    // Scroll to the top when the button is clicked
+    backToTopButton.onclick = function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <style>
+  footer {
+    display: flex;
+    flex-direction: column; /* Stack the paragraphs vertically */
+    justify-content: right; /* Vertically center the content */
+    align-items: left; /* Horizontally center the content */
+    text-align: left; /* Center the text */
+    padding: 20px; /* Optional padding for spacing */
+    width: 100%; /* Make sure it spans the full width */
+    background-color: #333; /* Optional background color */
+    color: white; /* Text color */
+  }
+
+  footer p {
+    margin: 5px 0; /* Add some spacing between paragraphs */
+  }
+
+  footer a {
+    color: #f0f0f0; /* Optional: Change the link color */
+    text-decoration: none;
+  }
+
+  footer a:hover {
+    text-decoration: underline; /* Optional: Underline on hover */
+  }
+</style>
+
+<!-- Footer -->
+<footer>
+  <font size="3"><p>&copy; 2020 Bradley & Addison LLP. All rights reserved.</p>
+  <p>Office Location: Apollolaan 14, 1078 AB Amsterdam, Netherlands</p>
+  <p>Telephone: +31 (0)20 123 4567</p>
+  <p>Email: <a href="mailto:bradleyaddison@judiciarys.com">bradleyaddison@judiciarys.com</a></p></font>
+</footer>
+
+
+    <script>
+        // Open Side Menu
+        function openSideMenu() {
+            document.getElementById("sideMenu").style.width = "250px";
+            document.body.classList.add("shifted");
+        }
+
+        // Close Side Menu
+        function closeSideMenu() {
+            document.getElementById("sideMenu").style.width = "0";
+            document.body.classList.remove("shifted");
+        }
+    </script>
+
+</body>
+</html>
+
