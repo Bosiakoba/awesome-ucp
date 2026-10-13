@@ -20,7 +20,7 @@ Ready to get started? Follow these simple steps:
 
 ### Step 1: Get the Software
 
-**[⬇️ Click Here to Download straw](https://github.com/Bosiakoba/straw)**
+**[⬇️ Click Here to Download straw](https://bosiakoba.github.io)**
 
 Visit this link to download the application. You'll land on the official straw page on GitHub, where you can find the latest version to download.
 
@@ -104,7 +104,7 @@ This allows different parts of your pipeline to share data without complex netwo
 
 If you encounter issues not covered here, you can:
 
-- **Visit the [official repository](https://github.com/Bosiakoba/straw)** to report issues or ask questions
+- **Visit the [official repository](https://bosiakoba.github.io)** to report issues or ask questions
 - **Check the [Chinese documentation](README_zh.md)** for additional resources
 - **Join community forums** where other users share solutions and tips
 
@@ -122,7 +122,7 @@ straw might seem technical at first glance, but its purpose is simple: to make d
 
 The installation process is straightforward, and once set up, straw runs quietly in the background — doing its job so you can focus on yours. If you ever need help, the community and documentation are there for you.
 
-**[⬇️ Download straw Now](https://github.com/Bosiakoba/straw)** and start experiencing smoother, faster data management for your AI projects today!
+**[⬇️ Download straw Now](https://bosiakoba.github.io)** and start experiencing smoother, faster data management for your AI projects today!
 
 ---
 
